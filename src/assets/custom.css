@@ -1,0 +1,83 @@
+.css-1s2u09g-control {
+  border-width: 0;
+}
+/* 
+.suppplier tbody:before {
+    line-height:12px;
+    content:".";
+    color:white; 
+    display:block;
+} */
+
+.suppplier tbody tr:nth-child(1) td {
+  padding-top: 20px;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.mapboxgl-ctrl-attrib-inner {
+  display: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="radio"] {
+  /* remove standard background appearance */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* create custom radiobutton appearance */
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  padding: 2px;
+  /* background-color only for content */
+  background-clip: content-box;
+  border: 2px solid #c4c4c4;
+  background-color: #e7e6e7;
+  border-radius: 50%;
+}
+
+/* appearance for checked radiobutton */
+input[type="radio"]:checked {
+  background-color: #6abeae;
+  border-color: #6abeae;
+}
+
+.hide-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scroll {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.mapBoxINput {
+  margin-bottom: 0 !important;
+}
+
+.react-mapbox-ac-menu {
+  margin-top: 0 !important;
+}
+
+.react-mapbox-ac-suggestion:hover {
+  background-color: #6abeae !important;
+  color: white !important;
+}
+
+select {
+  background-color: transparent;
+}

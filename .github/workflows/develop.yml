@@ -1,0 +1,35 @@
+name: Deploy stage branch
+
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - name: Git clone the repository
+        uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          role-to-assume: arn:aws:iam::567023918999:role/CrossAccountDevRole
+          role-session-name: samplerolesession
+          role-duration-seconds: 3600
+          aws-region: 'us-east-1'
+      - name: Install Dependencies
+        run: yarn
+      - name: Run build
+        run: npm run build
+      - name: Copy build to s3
+        run: |
+          aws s3 sync build/ s3://app-dev.apexinformatics.io && aws cloudfront create-invalidation --distribution-id E1SLAT15V1020Z --paths '/*'
